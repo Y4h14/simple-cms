@@ -4,20 +4,20 @@ import { DatabaseService } from 'src/database/database.service';
 
 @Injectable()
 export class ContentService {
-  constructor(private readonly databaseserver: DatabaseService) {}
+  constructor(private readonly databaseService: DatabaseService) {}
 
   create(createContentDto: Prisma.ContentCreateInput) {
-    return this.databaseserver.content.create({
+    return this.databaseService.content.create({
       data: createContentDto,
     });
   }
 
   findAll() {
-    return this.databaseserver.content.findMany();
+    return this.databaseService.content.findMany();
   }
 
   findOne(id: string) {
-    return this.databaseserver.content.findUnique({
+    return this.databaseService.content.findUnique({
       where: {
         id,
       },
@@ -25,7 +25,7 @@ export class ContentService {
   }
 
   update(id: string, updateContentDto: Prisma.ContentUpdateInput) {
-    return this.databaseserver.content.update({
+    return this.databaseService.content.update({
       where: {
         id,
       },
@@ -34,7 +34,7 @@ export class ContentService {
   }
 
   remove(id: string) {
-    return this.databaseserver.content.delete({
+    return this.databaseService.content.delete({
       where: {
         id,
       },
